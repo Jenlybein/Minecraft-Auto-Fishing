@@ -53,7 +53,6 @@ def capture_window(hwnd, rect):
     mfcDC.DeleteDC()
     win32gui.ReleaseDC(hwnd, hWndDC)
 
-    img.save("test.png")
     return img
 
 
@@ -76,14 +75,17 @@ def right_click(hwndr, rectr):
     win32gui.SendMessage(hwndr, win32con.WM_RBUTTONUP, win32con.MK_RBUTTON, makelong(x, y)) # 鼠标弹起
 
 if __name__ =='__main__':
-    hwnd = find_window_by_title('minecraft')
-    while(1) :
+    print("开启自动钓鱼，请回到游戏内抛出鱼竿，按F3+P即可不暂停游戏转入后台")
+    hwnd = find_window_by_title('minecraft*')
+    count = 0
+    while 1:
         rect = win32gui.GetWindowRect(hwnd) # 获取窗口坐标 left, top, right, bottom
         img = capture_window(hwnd, rect)
         if text_detect(img):
             right_click(hwnd, rect)
+            print("[次数:]", count ,"收杆")
             time.sleep(3)
             right_click(hwnd, rect)
-        else:
-            time.sleep(0.1)
+            print("[次数:]", count ,"抛竿")
+            count += 1
 
