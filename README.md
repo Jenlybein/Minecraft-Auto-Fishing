@@ -14,3 +14,5 @@
 2. 回到游戏内，按下 F3 + P，启用后台调试模式。
 3. 将 Python 程序开启。
 4. 在游戏内拿出鱼竿，站到合适区域按下右键抛出鱼竿。
+
+Github 地址：https://github.com/Jenlybein/Minecraft-Auto-Fishing
